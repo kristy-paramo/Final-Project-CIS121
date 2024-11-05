@@ -8,7 +8,31 @@ The whole project is a class.
   # Each question has 5 options
   # Each option is associated with a character
 
+
+LOOPS
+
+
+Files
+
+
+Collections
 1 list with questions
 1 Dictionary with options associated to answers 
 
+
+Functions
+
+
+
+Classes
+The whole project is one class
+
+
+
+1. Question 1: "What ...
+a. option (joy)
+b. option (sadness)
+c. option (anger)
+d. option (disgust)
+e. option (fear)
 
