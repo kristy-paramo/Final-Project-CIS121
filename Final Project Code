@@ -1,9 +1,14 @@
 '''
 Kristy, Joseph, Kelvin
 '''
+The whole project is a class.
+
+# Concept: Personality interactive quiz deciding which Inside Out character you are. 
+# 6 questions
+  # Each question has 5 options
+  # Each option is associated with a character
+
+1 list with questions
+1 Dictionary with options associated to answers 
 
 
-
-Dictionary with all the character names or each class is a character 
-
-each character is associated with a certain answer to each question. 
