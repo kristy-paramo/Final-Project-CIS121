@@ -10,9 +10,13 @@ The whole project is a class.
 
 
 Loops
+for loop going through each value and sees which emotion came out the most 
 
 
 Files
+import the Dictionaries which include
+1. def init function questions (6) with options as the keys and the values are the options 
+2. answers that correspond to options are added to a list called results
 
 
 Collections
@@ -21,7 +25,7 @@ Collections
 
 
 Functions
-
+1st: 
 
 
 Classes
