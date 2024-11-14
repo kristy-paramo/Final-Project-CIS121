@@ -105,5 +105,27 @@ You feel misunderstood by everyone and want nothing more than to be optimistic f
 a little hard to be positive. Sometimes you just need a good cry to uplift your mood.
 
 
+class Question:
+    def __init__(self, question_text, options, correct_answer):
+        self.question_text = question_text
+        self.options = options
+        self.correct_answer = correct_answer
 
+    def ask_question(self):
+        print(self.question_text)
+        for index, option in enumerate(self.options, 1):
+            print(f"{index}. {option}")
+        answer = input("Your choice (1/2/3/4): ")
+        return int(answer)
+class PersonalityQuiz:
+    def __init__(self, character_traits, questions):
+        self.character_traits = character_traits
+        self.questions = questions
+        self.scores = {trait: 0 for trait in character_traits}
+
+    def start_quiz(self):
+        print("\nWelcome to the Character Personality Quiz!\n")
+        for question in self.questions:
+            answer = question.ask_question()
+            self.process_answer(answer, question)
 
