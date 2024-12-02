@@ -104,6 +104,7 @@ Sadness
 You feel misunderstood by everyone and want nothing more than to be optimistic for everyone but it's
 a little hard to be positive. Sometimes you just need a good cry to uplift your mood.
 
+import os
 
 class Question:
     def __init__(self, question_text, options, correct_answer):
@@ -128,4 +129,54 @@ class PersonalityQuiz:
         for question in self.questions:
             answer = question.ask_question()
             self.process_answer(answer, question)
+      def process_answer(self, answer, question):
+        if answer == question.correct_answer:
+            for trait in self.character_traits:
+                self.scores[trait] += 1
+      def display_results(self):
+          print("\nYour personality results:")
+          sorted_scores = sorted(self.scores.items(), key=lambda x: x[1], reverse=True)
+          for trait, score in sorted_scores:
+              print(f"{trait}: {score}")
+  
+      def save_results_to_file(self):
+          with open("quiz_results.txt", "w") as file:
+              file.write("Character Personality Quiz Results\n")
+              file.write("-" * 30 + "\n")
+              for trait, score in self.scores.items():
+                  file.write(f"{trait}: {score}\n")
+          print("\nYour results have been saved to 'quiz_results.txt'.")
 
+def load_questions_from_file(filename):
+    questions = []
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+            for line in lines:
+                parts = line.strip().split(',')
+                question_text = parts[0]
+                options = parts[1:5]
+                correct_answer = int(parts[5])
+                questions.append(Question(question_text, options, correct_answer))
+    else:
+        print("Question file not found!")
+    return questions
+
+character_traits = ["Brave", "Smart", "Friendly", "Mysterious", "Loyal"]
+
+
+questions = load_questions_from_file("questions.txt")
+
+if not questions:
+    questions = [
+        Question("?", ["Fight", "Flee", "Hide", "Negotiate"], 1),
+        Question("?", ["Reading", "Socializing", "Exploring", "Creating"], 2),
+        Question("?", ["Bold", "Clever", "Kind", "Independent"], 3),
+        Question("?", ["Honor", "Knowledge", "Friendship", "Freedom"], 4)
+    ]
+
+quiz = PersonalityQuiz(character_traits, questions)
+
+quiz.start_quiz()
+
+quiz.display_results()
